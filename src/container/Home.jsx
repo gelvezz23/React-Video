@@ -13,7 +13,7 @@ import '../assets/styles/app.scss';
 
 const API = 'http://localhost:3000/initalState';
 
-const App = () => {
+const Home = () => {
     const initialState = useInitialState(API);
     // [ stado, metodo que captura el estado ] = useState(recibe array)
    /* const [ videos, setVideos] = useState({
@@ -63,4 +63,4 @@ const App = () => {
         </div>
     );
 }
-export default App;
+export default Home;
