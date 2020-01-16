@@ -1,5 +1,18 @@
-body {
-    margin: 0px;
-    background-color: red;
-    color: white;
+@import './media.scss';
+@import './vars.scss';
+
+*{
+    margin:0px;
+    padding:0px;
+}
+body{
+    font-family: $theme-font;
+    margin:0px;
+    padding: 0px;
+    height: 100vh;
+}
+.App{
+
+    background: $main-color;
+    
 }
