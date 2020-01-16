@@ -37,7 +37,9 @@ const App = () => {
                     initialState.mylist.length > 0 && (
                     <Categories title="Mi lista">
                         <Carousel>
-                            <CarouselItem/>
+                        {initialState.mylist.map(item =>
+                            <CarouselItem key={item.id} {...item}/>
+                        )}    
                         </Carousel>
                     </Categories> )
                 }
@@ -46,13 +48,14 @@ const App = () => {
                     {initialState.trends.map(item =>
                         <CarouselItem key={item.id} {...item}/>
                     )}
-                    
                 </Carousel>
             </Categories>
 
-            <Categories title="Que locura !! ">
+            <Categories title="Originales">
                 <Carousel>
-                    <CarouselItem/>
+                {initialState.originals.map(item =>
+                        <CarouselItem key={item.id} {...item}/>
+                    )}
                 </Carousel>
             </Categories>
 
