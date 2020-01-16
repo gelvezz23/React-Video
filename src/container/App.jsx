@@ -6,12 +6,17 @@ import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
 import Footer from '../components/Footer';
 
+import useInitialState from '../hooks/useInitialState';
+
+
 import '../assets/styles/app.scss';
 
+const API = 'http://localhost:3000/initalState';
 
 const App = () => {
+    const initialState = useInitialState(API);
     // [ stado, metodo que captura el estado ] = useState(recibe array)
-    const [ videos, setVideos] = useState({
+   /* const [ videos, setVideos] = useState({
         estado: false,
          mylist:[], 
          trends:[],
@@ -22,14 +27,14 @@ const App = () => {
         .then((response) => response.json()) //capta la data del api Response.json
         .then((data) => setVideos({...videos,...data,estado:true})) // llena el state con la data del api
     }, []); 
-    console.log(videos);   
+    console.log(videos);  */ 
     return(
         <div className="App">
             <Header/>
             <Search/>
             
-                {videos.estado === true && 
-                    videos.mylist.length > 0 && (
+                {initialState.estado === true && 
+                    initialState.mylist.length > 0 && (
                     <Categories title="Mi lista">
                         <Carousel>
                             <CarouselItem/>
@@ -38,7 +43,7 @@ const App = () => {
                 }
             <Categories title="Tendencia">
                 <Carousel>  
-                    {videos.trends.map(item =>
+                    {initialState.trends.map(item =>
                         <CarouselItem key={item.id} {...item}/>
                     )}
                     
