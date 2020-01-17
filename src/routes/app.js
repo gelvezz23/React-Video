@@ -6,8 +6,6 @@ import Register from '../container/Register';
 import NotFound from '../container/NotFound';
 import Layout from '../components/Layout';
 
-
-
 const App = () =>(
 
     <BrowserRouter>
@@ -22,4 +20,5 @@ const App = () =>(
     </BrowserRouter>
 
 );
+
 export default App;
