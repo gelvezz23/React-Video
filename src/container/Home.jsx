@@ -27,28 +27,38 @@ const Home = ({ mylist, trends ,originals}) => {
     return(
         <>    
             <Search/>  
-                {mylist.length > 0 && (
+
+                {mylist.length > 0 && 
                     <Categories title="Mi lista">
                         <Carousel>
-                            {mylist.map(item =>
-                                <CarouselItem key={item.id} {...item}/>
-                            )}    
+                            {mylist.map((item) => {
+                                return(
+                                    <CarouselItem key={item.id} {...item}/>
+                                    )
+                                })
+                            }    
                         </Carousel>
-                    </Categories> )
+                    </Categories> 
                 }
             <Categories title="Tendencia">
                 <Carousel>  
-                    {trends.map(item =>
-                        <CarouselItem key={item.id} {...item}/>
-                    )}
+                    {trends.map((item) =>{
+                        return(
+                            <CarouselItem key={item.id} {...item}/>
+                            )
+                        })
+                    }
                 </Carousel>
             </Categories>
 
             <Categories title="Originales">
                 <Carousel>
-                {originals.map(item =>
+                {originals.map((item) =>{
+                    return(
                         <CarouselItem key={item.id} {...item}/>
-                    )}
+                        )
+                    })
+                }
                 </Carousel>
             </Categories>
 
