@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import playIcon from './../assets/image/icons8-play-64.png';
 import moreIcon from './../assets/image/icons8-más-2-matemáticas-64.png';
 import deleteIcon from './../assets/image/icons8-eliminar-64.png';
+import { Link } from 'react-router-dom';
 
 const CarouselItem = (props) =>{
     const {id , cover, title, year, contentRating, duration, mylist, isList} = props;
@@ -30,7 +31,9 @@ const CarouselItem = (props) =>{
     <div className="carousel-items">
         <img className="carousel-items__img" src={cover} alt={title}/>
             <div className="carousel-items__details">
-                <img src={playIcon}/>
+                <Link to={`/player/${id}`}>
+                    <img src={playIcon}/>
+                </Link>
                 {isList ? 
                 <img src={deleteIcon} 
                      onClick={() => handleDeleteFavorite(id)} 
