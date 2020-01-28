@@ -3,7 +3,7 @@ import { connect} from 'react-redux';
 import { getVideoSource } from '../actions';
 import '../assets/styles/components/Player.scss';
 import Notfound from '../container/NotFound';
-import { Redirect } from 'react-router-dom';
+
 
 const Player = (props) => {
 

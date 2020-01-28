@@ -26,7 +26,7 @@ const Home = ({ mylist, trends ,originals}) => {
     console.log(videos);  */ 
     return(
         <>    
-            <Search/>  
+            <Search isHome/>  
 
                 {mylist.length > 0 && 
                     <Categories title="Mi lista">
