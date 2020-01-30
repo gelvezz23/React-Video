@@ -6,7 +6,7 @@ import reducer from './reducers'
 //Estado completo de la app
 import { Provider } from 'react-redux';
 //Logica de Store
-import { createStore } from 'redux';
+import { createStore, compose } from 'redux';
 
 
 const initialState = {
@@ -174,8 +174,8 @@ const initialState = {
           }
         ]
 }
-
-const store = createStore(reducer, initialState);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose ;
+const store = createStore(reducer, initialState, composeEnhancers);
 
 ReactDOM.render(
     <Provider store={store}>
