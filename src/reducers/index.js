@@ -36,10 +36,21 @@ const reducer = (state, action) => {
         case 'GET_VIDEO_SOURCE':
             return{
                 ...state,
-                playing: state.trends.find(items => items.id === Number(action.payload)) 
-                || state.original.find(items => items.id === Number(action.payload))
+                playing: state.trends.find(items => items.id === Number(action.payload)) || 
+                state.originals.find(items => items.id === Number(action.payload))
             }
-            
+
+        case 'GET_VIDEO_SEARCH':
+            if (action.payload === "") return { ...state, searching: [] };
+            const listSearch = [...state.trends, ...state.originals];
+            console.log(listSearch)
+            return{
+                ...state,
+                searching: listSearch.filter(
+                    items => items.title.toLowerCase().includes(
+                        action.payload.toLocaleLowerCase())
+                    )
+            }
         default:
             return state;
     }

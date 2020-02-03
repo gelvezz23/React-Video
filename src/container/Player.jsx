@@ -32,6 +32,7 @@ const Player = (props) => {
 const mapStateToProps = (state) =>{
     return{
         playing: state.playing,
+        originals : state.originals
     }
 }
 

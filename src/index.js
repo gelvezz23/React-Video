@@ -12,6 +12,7 @@ import { createStore, compose } from 'redux';
 const initialState = {
         "user": {},
         "playing":{},
+        "searching":{},
         "mylist": [],
         "trends": [
           {
