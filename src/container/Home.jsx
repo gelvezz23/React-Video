@@ -32,11 +32,7 @@ const Home = ({ mylist, trends ,originals, searching}) => {
                         <Carousel>
                             {searching.map((item) => {
                                 return(
-                                    <CarouselItem 
-                                        key={item.id} 
-                                        {...item}
-                                        isList
-                                    />
+                                    <CarouselItem key={item.id} {...item} />
                                     )
                                 })
                             }    

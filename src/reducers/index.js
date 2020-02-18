@@ -41,15 +41,17 @@ const reducer = (state, action) => {
             }
 
         case 'GET_VIDEO_SEARCH':
-            if (action.payload === "") return { ...state, searching: [] };
-            const listSearch = [...state.trends, ...state.originals];
-            console.log(listSearch)
-            return{
-                ...state,
-                searching: listSearch.filter(
-                    items => items.title.toLowerCase().includes(
-                        action.payload.toLocaleLowerCase())
-                    )
+            if (action.payload === ""){
+                return { ...state, searching:{} }
+            }else{
+                const listSearch = [...state.trends, ...state.originals];
+                return{
+                    ...state,
+                        searching: listSearch.filter(
+                        items => items.title.toLowerCase().includes(
+                            action.payload.toLocaleLowerCase())
+                        )
+                }
             }
         default:
             return state;

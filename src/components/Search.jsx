@@ -12,6 +12,8 @@ const Search = (props) =>{
         const {value } = event.target;
         if(value){
          getVideo(event.target.value);
+        }else{
+            getVideo("")
         }
     }
     return(
