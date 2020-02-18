@@ -12,6 +12,9 @@ second
  - npm run start
 
 # server side rendering
+Run server
+ - npm run start:dev
+
 
 Hace bind de cualquier módulo de babel que se requiera  
  - yarn add @babel/register --exact
