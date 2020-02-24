@@ -1,16 +1,39 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const autoprefixcer = require('autoprefixer');
+const Webpack = require('webpack');
+
 
 module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: './bundle.js',
     publicPath: '/',
     },
   resolve: {
     extensions: ['.js', '.jsx'],
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'async',
+      name: true,
+      cacheGroups: {
+        vendors: {
+          name: 'vendors',
+          chunks: 'all',
+          reuseExistingChunk: true,
+          priority: 1,
+          filename: 'assets/vendor.js',
+          enforce: true,
+          test(module, chunks) {
+            const name = module.nameForCondition && module.nameForCondition();
+            return chunks.some((chunk) => chunk.name !== 'vendor' && /[\\/]node_modules[\\/]/.test(name));
+          },
+        },
+      },
+    },
   },
   module: {
     rules: [
@@ -44,6 +67,7 @@ module.exports = {
           { loader: MiniCssExtractPlugin.loader },
           'css-loader',
           'sass-loader',
+          'postcss-loader',
         ],
       },
       {
@@ -62,6 +86,14 @@ module.exports = {
     historyApiFallback: true,
   },
   plugins: [
+    new Webpack.HotModuleReplacementPlugin(),
+    new Webpack.LoaderOptionsPlugin({
+      options:{
+        postcss:[
+          autoprefixcer(),
+        ]
+      }
+    }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
       filename: './index.html',
